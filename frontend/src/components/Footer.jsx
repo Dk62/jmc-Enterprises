@@ -46,10 +46,10 @@ const Footer = () => {
           <div className="col-md-3">
             <h5 style={{ color: 'var(--accent-green)' }}>{t('contact')}</h5>
             <p className="text-white-50 mb-2">
-              <i className="bi bi-envelope"></i> Email: info@agrish op.com
+              <i className="bi bi-envelope"></i> Email id: dilkhushkumar@gmail.com
             </p>
             <p className="text-white-50 mb-2">
-              <i className="bi bi-telephone"></i> Phone: +91-XXXX-XXXX-XXXX
+              <i className="bi bi-telephone"></i> Phone: +91 9876543210
             </p>
             <p className="text-white-50">
               <i className="bi bi-geo-alt"></i> India

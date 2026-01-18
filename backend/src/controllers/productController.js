@@ -70,22 +70,34 @@ exports.createProduct = async (req, res) => {
   try {
     const { name, description, price, category, image, stock, sku } = req.body;
 
-    let product = await Product.findOne({ sku });
-    if (product) {
-      return res.status(400).json({ 
-        success: false, 
-        message: 'Product with this SKU already exists' 
-      });
+    // Generate SKU if not provided
+    let productSku = sku;
+    if (!productSku) {
+      // Auto-generate SKU from product name and timestamp
+      const sanitizedName = name.toUpperCase().replace(/\s+/g, '').substring(0, 3);
+      const timestamp = Date.now().toString().slice(-6);
+      productSku = `${sanitizedName}-${timestamp}`;
     }
 
-    product = new Product({
+    // Check if SKU already exists only if SKU is provided
+    if (sku) {
+      const existingProduct = await Product.findOne({ sku: productSku });
+      if (existingProduct) {
+        return res.status(400).json({ 
+          success: false, 
+          message: 'Product with this SKU already exists' 
+        });
+      }
+    }
+
+    const product = new Product({
       name,
       description,
       price,
       category,
       image,
       stock,
-      sku
+      sku: productSku
     });
 
     await product.save();

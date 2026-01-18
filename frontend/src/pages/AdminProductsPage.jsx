@@ -19,7 +19,8 @@ const AdminProductsPage = () => {
     price: '',
     category: 'Seeds',
     stock: '',
-    image: ''
+    image: '',
+    sku: ''
   });
 
   useEffect(() => {
@@ -68,7 +69,7 @@ const AdminProductsPage = () => {
         alert('Product created successfully!');
       }
       
-      setFormData({ name: '', description: '', price: '', category: 'Seeds', stock: '', image: '' });
+      setFormData({ name: '', description: '', price: '', category: 'Seeds', stock: '', image: '', sku: '' });
       setEditingId(null);
       setShowForm(false);
       fetchProducts();
@@ -85,7 +86,8 @@ const AdminProductsPage = () => {
       price: product.price.toString(),
       category: product.category,
       stock: product.stock.toString(),
-      image: product.image || ''
+      image: product.image || '',
+      sku: product.sku || ''
     });
     setEditingId(product._id);
     setShowForm(true);
@@ -110,7 +112,7 @@ const AdminProductsPage = () => {
   const handleCancel = () => {
     setShowForm(false);
     setEditingId(null);
-    setFormData({ name: '', description: '', price: '', category: 'Seeds', stock: '', image: '' });
+    setFormData({ name: '', description: '', price: '', category: 'Seeds', stock: '', image: '', sku: '' });
   };
 
   if (!user?.isAdmin) {
@@ -220,6 +222,21 @@ const AdminProductsPage = () => {
                         placeholder="https://example.com/image.jpg"
                       />
                     </div>
+                  </div>
+
+                  <div className="mb-3">
+                    <label className="form-label">SKU (Optional)</label>
+                    <input
+                      type="text"
+                      className="form-control"
+                      name="sku"
+                      value={formData.sku}
+                      onChange={handleInputChange}
+                      placeholder="Leave empty for auto-generated SKU"
+                    />
+                    <small className="form-text text-muted">
+                      If left empty, SKU will be auto-generated from product name
+                    </small>
                   </div>
 
                   <div className="d-flex gap-2">

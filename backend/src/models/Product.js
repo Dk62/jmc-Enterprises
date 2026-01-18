@@ -53,7 +53,9 @@ const productSchema = new mongoose.Schema({
   }],
   sku: {
     type: String,
-    unique: true
+    unique: true,
+    sparse: true,
+    trim: true
   },
   specifications: mongoose.Schema.Types.Mixed,
   createdAt: {
