@@ -14,7 +14,11 @@ const HomePage = () => {
     const fetchFeaturedProducts = async () => {
       try {
         const response = await api.get('/products');
-        setFeaturedProducts(response.data.slice(0, 6));
+        // Handle both array and object with products property
+        const products = Array.isArray(response.data) 
+          ? response.data 
+          : response.data.products || [];
+        setFeaturedProducts(products.slice(0, 6));
       } catch (error) {
         console.error('Error fetching products:', error);
       } finally {

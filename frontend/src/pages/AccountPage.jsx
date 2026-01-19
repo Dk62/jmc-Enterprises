@@ -201,7 +201,7 @@ const AccountPage = () => {
                     </div>
                     <div className="order-details">
                       <span className="status">{order.orderStatus}</span>
-                      <span className="total">${order.totalPrice.toFixed(2)}</span>
+                      <span className="total">₹{order.totalPrice.toFixed(2)}</span>
                     </div>
                     <div className="order-items">
                       {order.items.map(item => (

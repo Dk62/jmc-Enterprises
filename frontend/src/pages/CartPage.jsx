@@ -21,7 +21,7 @@ const CartPage = () => {
                 <img src={item.image} alt={item.productName} />
                 <div className="item-details">
                   <h3>{item.productName}</h3>
-                  <p>${item.price}</p>
+                  <p>₹{item.price}</p>
                 </div>
                 <div className="item-actions">
                   <input 
@@ -34,7 +34,7 @@ const CartPage = () => {
                     {t('removeFromCart')}
                   </button>
                 </div>
-                <span className="item-total">${(item.price * item.quantity).toFixed(2)}</span>
+                <span className="item-total">₹{(item.price * item.quantity).toFixed(2)}</span>
               </div>
             ))}
           </div>
@@ -43,19 +43,19 @@ const CartPage = () => {
             <h2>{t('orderSummary')}</h2>
             <div className="summary-row">
               <span>{t('subtotal')}</span>
-              <span>${getTotal().toFixed(2)}</span>
+              <span>₹{getTotal().toFixed(2)}</span>
             </div>
             <div className="summary-row">
               <span>{t('shipping')}</span>
-              <span>$0.00</span>
+              <span>₹0.00</span>
             </div>
             <div className="summary-row">
               <span>{t('tax')}</span>
-              <span>$0.00</span>
+              <span>₹0.00</span>
             </div>
             <div className="summary-row total">
               <span>{t('grandTotal')}</span>
-              <span>${getTotal().toFixed(2)}</span>
+              <span>₹{getTotal().toFixed(2)}</span>
             </div>
             <button 
               className="btn-checkout"

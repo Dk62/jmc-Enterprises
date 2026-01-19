@@ -73,7 +73,7 @@ const ProductDetailPage = () => {
             <span>⭐ {product.rating.toFixed(1)} ({product.reviews.length} {t('reviews')})</span>
           </div>
 
-          <p className="price">${product.price}</p>
+          <p className="price">₹{product.price}</p>
           
           <p className="description">{product.description}</p>
 
